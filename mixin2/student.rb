@@ -1,12 +1,16 @@
+require_relative 'crud'
+
 class Student
+    include Crud
     # Attributes
-    attr_accessor :name, :mood, :age, :species
+    attr_accessor :name, :mood, :age, :password
 
     # Initiate object with variables
-    def initialize(name, mood, age)
+    def initialize(name, mood, age, password)
         @name = name
         @mood = mood
         @age = age
+        @password = password
     end
 
     # Define methods
@@ -25,9 +29,10 @@ class Student
     # end
 end
 
-mark = Student.new('Mark', 'Proud of me', 29)
+mark = Student.new('Mark', 'Proud of me', 29, 'secretword')
 # Change attribute
 mark.age = 30
 mark.who_is
 # Print specific attribute
-puts mark.mood
+hashed_password = mark.create_hash_digest(mark.password)
+puts hashed_password

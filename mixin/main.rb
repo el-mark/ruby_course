@@ -1,5 +1,5 @@
 require_relative 'crud'
- 
+
 users = [
           { username: "mashrur", password: "password1" },
           { username: "jack", password: "password2" },
@@ -9,4 +9,7 @@ users = [
         ]
  
 hashed_users = Crud.create_secure_users(users)
-puts hashed_users
+hashed_users
+
+authenticate = Crud.authenticate_user('jack', 'password2', users)
+puts authenticate
